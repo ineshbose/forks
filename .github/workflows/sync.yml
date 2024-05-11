@@ -1,0 +1,15 @@
+on:
+  schedule:
+    - cron: 0 0 * * 1
+  push:
+
+jobs:
+  ci:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ineshbose/navrepo-action@v1
+        with:
+          query: "map(select(.isFork))"
